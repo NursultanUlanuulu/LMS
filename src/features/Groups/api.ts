@@ -75,12 +75,15 @@ export const api = {
       },
       params,
     }),
+
   getStudentsTrials: (token: string, params: { group: number }) =>
-    apiRoot.get(`/user/trial/students/${params.group}`, {
+    apiRoot.get(`/user/trial/students/?group=${params.group}`, {
       headers: {
         Authorization: `Token ${token}`,
       }
+
     }),
+
   getStudentsUnsubscribed: (token: string, params: { group: number }) =>
     apiRoot.get(`/user/unsubscribed/from/the/group/${params.group}`, {
       headers: {

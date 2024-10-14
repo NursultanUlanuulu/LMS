@@ -43,31 +43,31 @@ const Info = () => {
                 })}
             </tbody>
           </table> */}
-        <TableContainer
-          sx={{ background: tokensDark.primary[500] }}
-          component={Paper}
-        >
-          <Table>
-            <TableHead>
-              <TableRow>
-                {headerLinks.map((tableHeader: string) => (
-                  <TableCell
-                    key={tableHeader}
-                    sx={{
-                      textTransform: "uppercase",
-                      fontWeight: 700,
-                      "&:last-of-type": {
-                        textAlign: "center",
-                      },
-                    }}
-                  >
-                    {tableHeader}
-                  </TableCell>
-                ))}
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {/* {studentGroups.data.map((row, index) => (
+          <TableContainer
+            sx={{ background: tokensDark.primary[500] }}
+            component={Paper}
+          >
+            <Table>
+              <TableHead>
+                <TableRow>
+                  {headerLinks.map((tableHeader: string) => (
+                    <TableCell
+                      key={tableHeader}
+                      sx={{
+                        textTransform: "uppercase",
+                        fontWeight: 700,
+                        "&:last-of-type": {
+                          textAlign: "center",
+                        },
+                      }}
+                    >
+                      {tableHeader}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {/* {studentGroups.data.map((row, index) => (
                 <StudentGroupRow
                   row={row}
                   key={index}
@@ -80,9 +80,9 @@ const Info = () => {
                   }}
                 />
               ))} */}
-            </TableBody>
-          </Table>
-        </TableContainer>
+              </TableBody>
+            </Table>
+          </TableContainer>
 
         </Paper>
       </Box>

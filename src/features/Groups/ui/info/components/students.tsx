@@ -41,6 +41,8 @@ const activeStudents = () => {
   const dispatch = useAppDispatch()
   const { id } = useParams()
   const studentsList = useAppSelector(selectStudents)
+  console.log(studentsList, 'list');
+
   const getStudentsStatus = useAppSelector(selectGetStudentsStatus)
   const [filter, setFilter] = useState({ type: "" })
 
@@ -60,7 +62,9 @@ const activeStudents = () => {
       const { data } = await api.getStudentsTrials(token, {
         group: Number(id),
       })
-      setList(data)
+      console.log(data);
+      console.log(data, ' students');
+      setList(data.results)
     } else if (type === "graduted") {
       const { data } = await api.getStudentsGraduate(token, {
         group: Number(id),
@@ -73,6 +77,7 @@ const activeStudents = () => {
       setList(data)
     }
   }
+
   useEffect(() => {
     dispatch(
       getGroupStudents({
@@ -84,7 +89,9 @@ const activeStudents = () => {
       console.log(filter.type)
       fetchList(filter.type)
     }
-  }, [page, filter.type])
+  }, [
+    page,
+    filter.type])
 
   const headerLinks = ["ФИО", "Номер", " Баланс", "Возраст"]
   return (
@@ -205,24 +212,25 @@ const activeStudents = () => {
             <TableBody>
               {list?.length > 0
                 ? list.map(row => (
-                    <TableRow key={row.id}>
-                      <TableCell
-                        sx={{
-                          "& a": {
-                            color: "#fff",
-                          },
-                        }}
-                      >
-                        <NavLink to={"/students/details/" + row.id}>
-                          {row.full_name}
-                        </NavLink>
-                      </TableCell>
-                      <TableCell>{row.phone}</TableCell>
-                      <TableCell>{row.balance} сом</TableCell>
+                  <TableRow key={row.id}>
+                    <TableCell
+                      sx={{
+                        "& a": {
+                          color: "#fff",
+                        },
+                      }}
+                    >
+                      <NavLink to={"/students/details/" + row.id}>
+                        {row.full_name}
+                        kfhb
+                      </NavLink>
+                    </TableCell>
+                    <TableCell>{row.phone}</TableCell>
+                    <TableCell>{row.balance} сом</TableCell>
 
-                      <TableCell>{getAgeYears(row.date_birth)}</TableCell>
-                    </TableRow>
-                  ))
+                    <TableCell>{getAgeYears(row.date_birth)}</TableCell>
+                  </TableRow>
+                ))
                 : null}
             </TableBody>
           </Table>
